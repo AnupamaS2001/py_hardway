@@ -16,7 +16,9 @@ print(SENT_COUNT)
 ARI=int(4.71 * (CHAR_COUNT/WORD_COUNT) + 0.5 * (WORD_COUNT/SENT_COUNT) - 21.43)
 print(ARI)
 
-if (ARI==1):
+if (ARI==0):
+    print("Group:Kinder Garden")
+elif (ARI==1):
     print("Group:Kinder Garden")
 elif (ARI==2):
     print("Group:First Grade")
