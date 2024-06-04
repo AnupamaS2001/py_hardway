@@ -60,8 +60,8 @@ def diagnose(journal):
     min_correlation=min(correlation_values.values())
     max_item = max(correlation_values, key=correlation_values.get)
     min_item = min(correlation_values, key=correlation_values.get)
-    print(f"Max correlation value:{max_correlation}={max_item}")
-    print(f"Min correlation value:{min_correlation}={min_item}")
+    print(f"Max correlation value:{max_correlation}= '{max_item}'")
+    print(f"Min correlation value:{min_correlation}= '{min_item}'")
 
 if __name__ == "__main__":
     filename, content = argv
