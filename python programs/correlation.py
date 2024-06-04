@@ -17,18 +17,18 @@ def compute_phi(journal, event):
             
             # print(event_happen )
           
-            if event in entry["events"] and squirrel:
+            if event_happen == 1 and squirrel == 1:
                
                 n11 += 1
                 
-            elif event_happen == 0 and squirrel==0:
+            elif event_happen == 0 and squirrel == 0:
                 n00 += 1
                 
                 
-            elif event_happen==1 and entry["squirrel"]==0:
+            elif event_happen == 1 and squirrel == 0:
                 n10 += 1
                 
-            elif event not in entry["events"] and squirrel:
+            elif event_happen == 0 and squirrel == 1:
                 n01 += 1
                    
     n1_plus = n11 + n10
@@ -52,22 +52,19 @@ def compute_correlations(journal):
         for event in events:
             my_dict[event] = compute_phi(journal, event)
     print("correlation value of events:",my_dict)
-    
-    correlation_values = list(my_dict.values())
-    correlation_values.sort()
-    return correlation_values
+    return my_dict
 
 def diagnose(journal):
     correlation_values = compute_correlations(journal)
-    max_correlation = max(correlation_values)
-    min_correlation=min(correlation_values)
-    print("Max correlation value:", max_correlation)
-    print("Min correlation value:", min_correlation)
+    max_correlation = max(correlation_values.values())
+    min_correlation=min(correlation_values.values())
+    max_item = max(correlation_values, key=correlation_values.get)
+    min_item = min(correlation_values, key=correlation_values.get)
+    print(f"Max correlation value:{max_correlation}={max_item}")
+    print(f"Min correlation value:{min_correlation}={min_item}")
 
 if __name__ == "__main__":
     filename, content = argv
     journal = load_journal(content)
     diagnose(journal)
     
-
-
